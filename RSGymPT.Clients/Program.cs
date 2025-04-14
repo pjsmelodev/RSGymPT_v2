@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using RSGymPT.Clients.Data;
+using RSGymPT.Clients.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Adicionar o DbContext para o PostgreSQL
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
