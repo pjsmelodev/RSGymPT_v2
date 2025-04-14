@@ -6,8 +6,11 @@ namespace RSGymPT.Clients.Models
     {
         [Key]
         public int CustomerId { get; set; }
+        
         [Required]
+        [StringLength(100)]
         public string CustomerName { get; set; }
+     
         public bool IsFidelized { get; set; }
     }
 }
