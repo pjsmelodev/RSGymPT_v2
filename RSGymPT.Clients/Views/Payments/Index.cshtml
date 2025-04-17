@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Amount)
+                @Html.DisplayNameFor(model => model.PaymentType.Amount)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PaymentDate)
@@ -28,26 +28,26 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentType.PaymentTypeName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PaymentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PaymentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PaymentId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentType.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentType.PaymentTypeName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PaymentId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PaymentId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PaymentId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
