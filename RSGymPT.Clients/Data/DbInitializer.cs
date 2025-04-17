@@ -17,11 +17,19 @@ namespace RSGymPT.Clients.Data
 
             var PaymentTypes = new PaymentType[]
             {
-                new PaymentType { PaymentTypeName = "Monthly" },
-                new PaymentType { PaymentTypeName = "Per Session" }
+                new PaymentType 
+                {
+                    PaymentTypeName = "Monthly",
+                    Amount = PricingConstants.MonthlyPrice * (1 - PricingConstants.DiscountPercentage)
+                },
+                new PaymentType 
+                { 
+                    PaymentTypeName = "Per Session",
+                    Amount = PricingConstants.PerSessionPrice
+                }
             };
             context.PaymentTypes.AddRange(PaymentTypes);
-            context.SaveChanges();
+            context.SaveChanges(); 
 
             var Categories = new Category[]
             {
@@ -29,7 +37,7 @@ namespace RSGymPT.Clients.Data
                 new Category { CategoryName = "Per Session" }
             };
             context.Categories.AddRange(Categories);
-            context.SaveChanges();
+            context.SaveChanges(); 
 
             var Customers = new Customer[]
             {
@@ -45,7 +53,7 @@ namespace RSGymPT.Clients.Data
                 }
             };
             context.Customers.AddRange(Customers);
-            context.SaveChanges();
+            context.SaveChanges(); 
 
             var CustomerCategories = new CustomerCategory[]
             {
@@ -61,7 +69,7 @@ namespace RSGymPT.Clients.Data
                 }
             };
             context.CustomerCategories.AddRange(CustomerCategories);
-            context.SaveChanges();
+            context.SaveChanges(); 
 
             var payments = new Payment[]
             {
@@ -69,19 +77,17 @@ namespace RSGymPT.Clients.Data
                 {
                     CustomerId = Customers[0].CustomerId,
                     PaymentDate = DateTime.UtcNow,
-                    PaymentTypeId = PaymentTypes[0].PaymentTypeId,
-                    Amount = PricingConstants.MonthlyPrice * (1 - PricingConstants.DiscountPercentage)
+                    PaymentTypeId = PaymentTypes[0].PaymentTypeId
                 },
                 new Payment
                 {
                     CustomerId = Customers[1].CustomerId,
                     PaymentDate = DateTime.UtcNow,
-                    PaymentTypeId = PaymentTypes[1].PaymentTypeId,
-                    Amount = PricingConstants.PerSessionPrice
+                    PaymentTypeId = PaymentTypes[1].PaymentTypeId
                 }
             };
             context.Payments.AddRange(payments);
-            context.SaveChanges();
+            context.SaveChanges(); 
         }
     }
 }
