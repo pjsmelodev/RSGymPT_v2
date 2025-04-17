@@ -68,14 +68,14 @@ namespace RSGymPT.Clients.Data
                 new Payment
                 {
                     CustomerId = Customers[0].CustomerId,
-                    PaymentDate = DateTime.Now,
+                    PaymentDate = DateTime.UtcNow,
                     PaymentTypeId = PaymentTypes[0].PaymentTypeId,
                     Amount = PricingConstants.MonthlyPrice * (1 - PricingConstants.DiscountPercentage)
                 },
                 new Payment
                 {
                     CustomerId = Customers[1].CustomerId,
-                    PaymentDate = DateTime.Now,
+                    PaymentDate = DateTime.UtcNow,
                     PaymentTypeId = PaymentTypes[1].PaymentTypeId,
                     Amount = PricingConstants.PerSessionPrice
                 }
